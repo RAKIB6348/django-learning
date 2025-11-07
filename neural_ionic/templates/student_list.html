@@ -38,6 +38,7 @@ th {
 		<th>Roll</th>
 		<th>Department</th>
 		<th>City</th>
+    <th>Image</th>
     <th>Action</th>
 	</tr>
 
@@ -48,6 +49,14 @@ th {
     <td>{{data.roll}}</td>
     <td>{{data.department}}</td>
     <td>{{data.city}}</td>
+    <td>
+  {% if data.profile_image and data.profile_image.name %}
+    <img src="{{ data.profile_image.url }}" alt="" width="50px">
+  {% else %}
+    No Image
+  {% endif %}
+</td>
+
     <td>
       <a href="{% url 'edit_student' data.id %}">Edit</a>
       <a href="{% url 'delete_student' data.id%}">Delete</a>

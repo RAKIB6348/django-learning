@@ -64,6 +64,7 @@ def edit_student(request, myid):
 		student.roll = request.POST.get('roll')
 		student.department = request.POST.get('department')
 		student.city = request.POST.get('city')
+		student.profile_image = request.FILES.get('profile_image')
 		student.save()
 
 		return redirect('student_list')

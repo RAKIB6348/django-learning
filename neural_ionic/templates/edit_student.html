@@ -42,8 +42,12 @@ input[type=submit]:hover {
 <center><h2>{{title}}</h2></center>
 
 
-<form action="{% url 'edit_student' student.id %}" method="post">
+<form action="{% url 'edit_student' student.id %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
+
+  <label for="profile_image">Profile Image</label>
+  <input type="file" id="profile_image" name="profile_image" value="{{student.profile_image}}" >
+
   <label for="name">Name</label>
   <input type="text" id="name" name="name" value="{{student.name}}" placeholder="Your name..">
 
@@ -57,7 +61,7 @@ input[type=submit]:hover {
   <input type="text" id="city" name="city" value="{{student.city}}" placeholder="Your city..">
 
   
-  <input type="submit" value="Submit">
+  <input type="submit" value="Update">
 </form>
 
 
