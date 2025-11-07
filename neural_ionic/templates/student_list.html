@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}student-list{% endblock title%}
+
+{% block content %}
+
+<style>
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+
+<center><h2>{{title}}</h2></center>
+<table>
+	<tr>
+    <th># ID</th>
+		<th>Name</th>
+		<th>Roll</th>
+		<th>Department</th>
+		<th>City</th>
+    <th>Action</th>
+	</tr>
+
+  {% for data in student %}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{data.name}}</td>
+    <td>{{data.roll}}</td>
+    <td>{{data.department}}</td>
+    <td>{{data.city}}</td>
+    <td>
+      <a href="{% url 'edit_student' data.id %}">Edit</a>
+      <a href="{% url 'delete_student' data.id%}">Delete</a>
+    </td>
+  </tr>
+
+  {% endfor %}
+
+
+</table>
+   
+{% endblock content %}

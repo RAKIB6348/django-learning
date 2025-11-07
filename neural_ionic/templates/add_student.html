@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}student-add{% endblock title %}
+
+{% block content %}
+
+<style>
+form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+label {display: block;}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+</style>
+
+<center><h2>{{title}}</h2></center>
+
+<form action="{% url 'add_student' %}" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+
+  <label for="profile_image">Profile Image</label>
+  <input type="file" id="profile_image" name="profile_image" >
+
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" placeholder="Your name..">
+
+  <label for="roll">Roll</label>
+  <input type="text" name="roll" id="roll" placeholder="Your roll..">
+
+  <label for="department">Department</label>
+  <input type="text" id="department" name="department" placeholder="Your department..">
+
+  <label for="city">City</label>
+  <input type="text" id="city" name="city" placeholder="Your city..">
+
+  
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock content %}
